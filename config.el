@@ -4,7 +4,7 @@
 
 ;; User identity settings used by GPG, email clients, templates, and snippets.
 (setq user-full-name "Anaya Koirala"
-      user-mail-address "anaya@koirala.xyz")
+      user-mail-address "koiran01@gettysburg.edu")
 
 ;; Font configuration:
 ;; - `doom-font`: primary font
@@ -29,8 +29,8 @@
 
 ;; Directory Management
 (setq org-directory "~/Documents/org/")
-(setq default-directory "~/Documents/Code/")
-(setq dired-default-directory "~/Documents/Code/")
+(setq default-directory "~/Documents/")
+(setq dired-default-directory "~/Documents/")
 
 ;; Remove the quit confirmation
 (setq confirm-kill-emacs nil)
