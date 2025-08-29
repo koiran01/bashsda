@@ -1,0 +1,144 @@
+"==============================================================================
+" Doom Emacs Evil‑style Keybindings for IdeaVim (with Which‑Key hints)
+"==============================================================================
+
+"------------------------------------------------------------------------------
+" General Settings
+"------------------------------------------------------------------------------
+let mapleader = " "                     " Doom uses SPACE as leader
+set clipboard+=unnamed                 " Use system clipboard
+set surround                           " Enable vim-surround
+set commentary                         " Enable 'gc' commenting
+set highlightedyank                    " Highlight yanked text
+set sneak                              " Enable 2-char sneak movement
+set easymotion                         " Optional: AceJump-like motions
+set scrolloff=5                        " Keep cursor centered vertically
+set showmode                           " Show current mode
+set which-key                          " Enable Which-Key popup :contentReference[oaicite:1]{index=1}
+" Optional Which-Key config:
+let g:WhichKey_DefaultDelay = 100      " Popup delay in ms
+let g:WhichKey_ShowVimActions = "true" " Show default Vim mappings too
+
+"------------------------------------------------------------------------------
+" Which-Key Descriptions (appear in popup)
+"------------------------------------------------------------------------------
+let g:WhichKeyDesc_windows       = "<Space> w  Window management"
+let g:WhichKeyDesc_windows_split = "<Space> wv Split vertical | ws Split horizontal"
+let g:WhichKeyDesc_windows_unsplit = "<Space> wu Close split | wm Move group"
+let g:WhichKeyDesc_windows_close = "<Space> wd Close window/tab"
+
+let g:WhichKeyDesc_file         = "<Space> f  File Navigation"
+let g:WhichKeyDesc_file_find     = "<Space> ff Find file"
+let g:WhichKeyDesc_file_recent   = "<Space> fr Recent files"
+let g:WhichKeyDesc_file_loc     = "<Space> fl Goto location"
+let g:WhichKeyDesc_file_search   = "<Space> fc Search in path"
+let g:WhichKeyDesc_file_scratch  = "<Space> fs Scratch file"
+let g:WhichKeyDesc_file_saveall  = "<Space> fS Save all"
+
+let g:WhichKeyDesc_code         = "<Space> g  Code Navigation"
+let g:WhichKeyDesc_code_declaration = "<Space> gd Go to Declaration"
+let g:WhichKeyDesc_code_type    = "<Space> gy Go to Type"
+let g:WhichKeyDesc_code_impl    = "<Space> gi Implementation"
+let g:WhichKeyDesc_code_usages  = "<Space> gu Show Usages"
+let g:WhichKeyDesc_code_test    = "<Space> gt Go to Test"
+let g:WhichKeyDesc_code_back    = "<Space> gb Back"
+let g:WhichKeyDesc_code_forward = "<Space> gf Forward"
+let g:WhichKeyDesc_code_class   = "<Space> gC Go to Class"
+
+let g:WhichKeyDesc_refactor     = "<Space> r  Refactorings"
+let g:WhichKeyDesc_refactor_rename    = "<Space> rn Rename"
+let g:WhichKeyDesc_refactor_method    = "<Space> rm Extract Method"
+let g:WhichKeyDesc_refactor_var       = "<Space> rv Introduce Var"
+let g:WhichKeyDesc_refactor_field     = "<Space> rf Introduce Field"
+let g:WhichKeyDesc_refactor_signature = "<Space> rs Change Sig"
+let g:WhichKeyDesc_refactor_quick     = "<Space> rr Refactor List"
+
+let g:WhichKeyDesc_toggle       = "<Space> d  Toggles & Utilities"
+let g:WhichKeyDesc_toggle_distraction = "<Space> dd Distraction Free"
+let g:WhichKeyDesc_toggle_zen        = "<Space> dz Zen Mode"
+let g:WhichKeyDesc_toggle_fullscreen = "<Space> df Fullscreen"
+let g:WhichKeyDesc_toggle_close      = "<Space> q  Close Editor"
+let g:WhichKeyDesc_toggle_intention  = "<Space> am Intentions"
+let g:WhichKeyDesc_toggle_search     = "<Space> as Search Everywhere"
+
+let g:WhichKeyDesc_terminal     = "<Space> ot Open Terminal"
+
+"------------------------------------------------------------------------------
+" Movement
+"------------------------------------------------------------------------------
+nnoremap <A-h> <C-w>h              " Move focus left
+nnoremap <A-j> <C-w>j              " Move focus down
+nnoremap <A-k> <C-w>k              " Move focus up
+nnoremap <A-l> <C-w>l              " Move focus right
+
+vnoremap < <gv                     " Reselect indentation
+vnoremap > >gv
+nnoremap qj @q                     " Replay macro q
+
+"------------------------------------------------------------------------------
+" Window Management (Leader-w)
+"------------------------------------------------------------------------------
+map <leader>wh <Action>(SplitHorizontally)
+map <leader>wv <Action>(SplitVertically)
+map <leader>wu <Action>(Unsplit)
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+map <leader>wd <Action>(CloseContent)
+
+"------------------------------------------------------------------------------
+" File Navigation (Leader-f)
+"------------------------------------------------------------------------------
+map <leader>ff <Action>(GotoFile)
+map <leader>fr <Action>(RecentFiles)
+map <leader><leader> <Action>(RecentFiles)
+map <leader>fl <Action>(RecentLocations)
+map <leader>fc <Action>(FindInPath)
+map <leader>fs <Action>(NewScratchFile)
+map <leader>fS :action SaveAll<CR>
+
+"------------------------------------------------------------------------------
+" Code Navigation (Leader-g)
+"------------------------------------------------------------------------------
+map <leader>gd <Action>(GotoDeclaration)
+map <leader>gy <Action>(GotoTypeDeclaration)
+map <leader>gi <Action>(GotoImplementation)
+map <leader>gu <Action>(ShowUsages)
+map <leader>gt <Action>(GotoTest)
+map <leader>gb <Action>(Back)
+map <leader>gf <Action>(Forward)
+map <leader>gC <Action>(GotoClass)
+map <leader>gs <Action>(FindInPath)
+
+"------------------------------------------------------------------------------
+" Refactoring (Leader-r)
+"------------------------------------------------------------------------------
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+"------------------------------------------------------------------------------
+" Text Editing & Comments
+"------------------------------------------------------------------------------
+map <leader>c <Action>(CommentByLineComment)
+vmap gc <Plug>(Commentary)
+
+"------------------------------------------------------------------------------
+" IDE Utilities (Leader-a, d, q, toggles)
+"------------------------------------------------------------------------------
+map <leader>am <Action>(ShowIntentionActions)
+map <leader>as <Action>(SearchEverywhere)
+map <leader>q  <Action>(CloseContent)
+map <leader>dd <Action>(ToggleDistractionFreeMode)
+map <leader>dz <Action>(ToggleZenMode)
+map <leader>df <Action>(ToggleFullScreen)
+
+"------------------------------------------------------------------------------
+" Terminal integration
+"------------------------------------------------------------------------------
+map <leader>t<Action>(Terminal)
+"------------------------------------------------------------------------------
+" End of config
+"------------------------------------------------------------------------------
+
